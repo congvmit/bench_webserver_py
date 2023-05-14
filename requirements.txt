@@ -1,0 +1,4 @@
+uvicorn
+fastapi
+gunicorn==20.1.0
+socketify

@@ -1,0 +1,11 @@
+concurrency: 18
+base: 'http://localhost'
+iterations: 10000
+
+plan:
+  # - name: FastAPI FIB Uvicorn Sync
+  #   request:
+  #     url: 'http://localhost:8802/fib/20'
+  - name: FastAPI FIB Uvicorn Sync
+    request:
+      url: 'http://localhost:8802'

@@ -1,0 +1,8 @@
+concurrency: 18
+base: 'http://localhost'
+iterations: 10000
+
+plan:
+  - name: Socketify FIB Sync
+    request:
+      url: 'http://localhost:8804/'

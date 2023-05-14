@@ -1,0 +1,6 @@
+from python:3.11-alpine
+
+WORKDIR /home
+COPY app_async.py fastapi.requirements.txt .
+RUN pip install --no-cache-dir -r fastapi.requirements.txt
+CMD exec gunicorn --bind :80 --workers 18 --worker-class uvicorn.workers.UvicornWorker app_async:app 

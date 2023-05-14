@@ -1,0 +1,8 @@
+concurrency: 18
+base: 'http://localhost'
+iterations: 10000
+
+plan:
+  - name: FastAPI FIB Unicorn+Uvicornw
+    request:
+      url: 'http://localhost:8888/'

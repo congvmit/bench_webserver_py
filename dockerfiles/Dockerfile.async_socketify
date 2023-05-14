@@ -1,0 +1,12 @@
+from pypy:3.9-7.3.11
+
+RUN apt update && apt install libuv1-dev cmake golang -y && \
+    git clone https://github.com/cirospaciari/socketify.py.git && \
+    cd ./socketify.py && git submodule update --init --recursive --remote && \
+    cd ./src/socketify/native/ && make linux && cd ../../../ && \
+    pypy3 -m pip install . && \
+    cd /home
+WORKDIR /home
+COPY app_socketify_async.py requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+CMD exec pypy3 -m socketify app_socketify_async:run --port 80 --host 0.0.0.0 --workers 2

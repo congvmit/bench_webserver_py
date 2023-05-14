@@ -1,0 +1,7 @@
+from nogil/python:latest
+
+WORKDIR /home
+COPY app.py fastapi.requirements.txt .
+RUN pip install --no-cache-dir -r fastapi.requirements.txt
+# EXPOSE 8888
+CMD exec gunicorn --bind :80 --workers 18 --threads 2 --worker-class uvicorn.workers.UvicornWorker app:app 
